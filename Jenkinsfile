@@ -22,7 +22,7 @@ pipeline{
         
         stage('Docker Build'){
             steps{
-                sh "docker build . -t kammana/hariapp:${DOCKER_TAG} "
+                sh "docker build . -t acolmena27/test-jenkins:${DOCKER_TAG} "
             }
         }
         
@@ -31,7 +31,7 @@ pipeline{
                 withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
                     sh "docker login -u acolmena27 -p ${dockerHubPwd}"
                 }
-                sh "docker push acolmena27/hariapp:${DOCKER_TAG} "
+                sh "docker push acolmena27/test-jenkins:${DOCKER_TAG} "
             }
         }
         
